@@ -1,4 +1,4 @@
-var seachTerm;
+var searchTerm;
 
 function show(id) {
   document.getElementById(id).style.display = 'inline-block';
@@ -28,16 +28,41 @@ function result(ref) {
 function depthSearch() {
   console.log('Running depth first search');
 
-  /*
-   * call result() function passing the reference
-   * of the tutorial
-   *
-   * if the algorithm did not find the tutorial,
-   * pass null for result()
-   *
-   */
+  visited = {};
+  for (key in tutorials)
+    visited[key] = false;
 
-  result(12); // testing with index 12
+  result(DFS('init'));
+}
+
+
+function DFS(key) {
+  var node = tutorials[key];
+  if (node.isFinal && fullMatch(searchTerm, node.title))
+    return key;
+
+  visited[key] = true;
+
+  for (var i = 0; i < node.related.length; i++) {
+    if (visited[node.related[i]] == false) {
+      var answer = DFS(node.related[i]);
+      if (answer != null)
+        return answer;
+    }
+  }
+
+  return null;
+}
+
+function fullMatch(s1, s2) {
+  s2 = s2.toLowerCase();
+  var words = s1.split(' ').map(word => word.toLowerCase());
+
+  for (var i = 0; i < words.length; i++)
+    if (s2.indexOf(words[i]) == -1)
+      return false;
+
+  return true;
 }
 
 function hillClimbingSearch() {
