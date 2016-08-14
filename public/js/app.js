@@ -101,9 +101,23 @@ function init(event) {
     hillClimbingSearch();
 }
 
+function restart(event) {
+  event.preventDefault();
+
+  hide('fail');
+  hide('resultPanel');
+  show('formPanel');
+}
+
 hide('loading');
 hide('resultPanel');
 hide('fail');
 
 var form = document.getElementById('submit');
 form.addEventListener('click', init);
+
+var tryAgain = document.getElementById('tryAgainBt');
+tryAgain.addEventListener('click', restart);
+
+var back = document.getElementById('backBt');
+back.addEventListener('click', restart);
