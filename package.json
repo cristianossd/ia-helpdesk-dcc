@@ -1,0 +1,35 @@
+{
+  "name": "ia-helpdesk-dcc",
+  "version": "1.0.0",
+  "description": "Intelligent Agent Help Desk for DCC/UFBA Network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristianossd/ia-helpdesk-dcc.git"
+  },
+  "keywords": [
+    "ia",
+    "intelligent",
+    "agent",
+    "help",
+    "desk",
+    "dcc",
+    "ufba"
+  ],
+  "author": "Cristiano Santos <cristianossd@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristianossd/ia-helpdesk-dcc/issues"
+  },
+  "homepage": "https://github.com/cristianossd/ia-helpdesk-dcc#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jslint": "^1.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9"
+  }
+}
