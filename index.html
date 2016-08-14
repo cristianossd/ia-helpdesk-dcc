@@ -7,7 +7,32 @@
 <body>
   <h2>Intelligent Agent Help Desk for DCC/UFBA Network</h2>
 
-  <div id="dump"></div>
+  <div id="formPanel" class="form">
+    <p>What do you want to find?</p>
+
+    <form id="form">
+      <input id="searchBox" type="text" name="search" /> <br />
+      <input id="depth" type="radio" name="searchType" value="depth"> Depth-First Search <br />
+      <input id="hillClimbing" type="radio" name="searchType" value="hill-climbing"> Hill-Climbing <br />
+
+      <button id="submit">Search</button>
+    </form>
+  </div>
+
+  <div id="loading">
+    I'm working, please wait ...
+  </div>
+
+  <div id="resultPanel" class="result">
+    I found what you want! Just follow the link below: <br />
+    <a id="resultLink" href="">Go to result</a>
+  </div>
+
+  <div id="fail" class="fail">
+    I did not find results for <span id="resultTerm"></span>. Do you want to try with new term?
+
+    <button id="tryAgainBt">Try Again</button>
+  </div>
 
   <script src="public/js/db/tutorials.js"></script>
   <script src="public/js/app.js"></script>
