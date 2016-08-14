@@ -11,14 +11,16 @@
 var tutorials = {
   'init': {
     title: 'Initial page',
-    related: [0, 3, 5, 8, 14, 16, 18, 21, 24]
+    related: [0, 3, 5, 8, 14, 16, 18, 21, 24],
+    isFinal: false
   },
 
   0: {
     title: 'Arquivos pessoais',
     content: 'Como acessar seus arquivos de fora da rede. Página pessoal no' +
              'www.dcc.ufba.br',
-    related: [1, 2]
+    related: [1, 2],
+    isFinal: false
   },
 
   1: {
@@ -61,7 +63,8 @@ var tutorials = {
              'Para deslogar, basta ir em Session >> Disconect ou pressionar Ctrl+Shift+D. ' +
              'Foi usado Microsoft Windows XP ® Pack 2.',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1210034088',
-    related: [2]
+    related: [2],
+    isFinal: true
   },
 
   2: {
@@ -105,13 +108,15 @@ var tutorials = {
              'Assim, todo o conteúdo presente nesta pasta estará disponível em ' +
              'http://www.dcc.ufba.br/~usuario. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1210041395',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   3: {
     title: 'Certificado de segurança',
     content: 'Certificado de Segurança do DCC/UFBA',
-    related: [4]
+    related: [4],
+    isFinal: false
   },
 
   4: {
@@ -171,14 +176,16 @@ var tutorials = {
              'será necessário instalar o certificado duas vezes: uma pelo Firefox e outra ' +
              'pelo Internet Explorer.',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1224853366',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   5: {
     title: 'Gerenciamento de Projetos',
     content: 'Registro no Redmine. Gerenciamento de Projetos',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1343241325',
-    related: [6, 7]
+    related: [6, 7],
+    isFinal: false
   },
 
   6: {
@@ -191,7 +198,8 @@ var tutorials = {
              'Informe seu nome e Sobrenome e clique no botão submit ' +
              'Pronto seu registro no Redmine foi realizado com sucesso. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1343236317',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   7: {
@@ -223,14 +231,16 @@ var tutorials = {
              'eventos de projetos atuais e passados, tornando a visão geral do projeto ' +
              'e o acompanhamento do progresso muito fácil. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1343241325',
-    related: [6]
+    related: [6],
+    isFinal: true
   },
 
   8: {
     title: 'Serviços de email',
     content: 'Redirecionamento de mensagens de email. Acessando email via IMAP. Acessando ' +
              'Email via POP',
-    related: [9, 10, 13]
+    related: [9, 10, 13],
+    isFinal: false
   },
 
   9: {
@@ -255,7 +265,8 @@ var tutorials = {
              'local. Portanto, se você não usa o e-mail local, é muito importante que você ' +
              'redirecione suas mensagens para um e-mail que você use. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/RedirecionamentoEmails',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   10: {
@@ -297,7 +308,8 @@ var tutorials = {
              'Ms Outlook ' +
              'Mozilla Thunderbird',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1225801768',
-    related: [11, 12]
+    related: [11, 12],
+    isFinal: true
   },
 
   11: {
@@ -339,7 +351,8 @@ var tutorials = {
              'Ultimate. ' +
              'Qualquer dúvida, não hesite em contatar-nos através do suporte@dcc.ufba.br. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1226935108',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   12: {
@@ -361,7 +374,8 @@ var tutorials = {
              'SSL/TSL para os dois protocolos. ' +
              'Versão do Mozilla Thunderbird utilizada: 31.8.0. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1225894074',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   13: {
@@ -406,13 +420,15 @@ var tutorials = {
              'http://pt.wikipedia.org/wiki/SMTP ' +
              'http://pt.wikipedia.org/wiki/Post_Office_Protocol',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1225803416',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   14: {
     title: 'VPN do DCC',
     content: 'Acessando o Proxy Externo do DCC utilizando OpenVPN',
-    related: [15]
+    related: [15],
+    isFinal: false
   },
 
   15: {
@@ -455,13 +471,15 @@ var tutorials = {
              'Menu Ferramentas, Opções da Internet, aba Conexões, clicar no botão ' +
              'Configurações da LAN. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1263925447',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   16: {
     title: 'Quota de Armazenamento',
     content: 'Problema com cota excedida em sua conta DCC',
-    related: [17]
+    related: [17],
+    isFinal: false
   },
 
   17: {
@@ -528,13 +546,15 @@ var tutorials = {
              'aqueles maiores e possíveis de serem removidos. ' +
              'Remova tais arquivos utilizando a combinação de teclas Shift-Delete ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1241803034',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   18: {
     title: 'Servidor de aplicações',
     content: 'Usando o servidor de aplicações (app). Usando o GIT no servidor de aplicações',
-    related: [19, 20]
+    related: [19, 20],
+    isFinal: false
   },
 
   19: {
@@ -569,7 +589,8 @@ var tutorials = {
              'Para transferir arquivos, você pode usar o WinSCP (Windows) ou o gFTP ' +
              '(Linux). Veja mais informações aqui.',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1219550947',
-    related: [1]
+    related: [1],
+    isFinal: true
   },
 
   20: {
@@ -603,14 +624,16 @@ var tutorials = {
              'Omitindo o endereço remoto do repositório, como no segundo exemplo, é ' +
              'usando o mesmo endereço de onde o mesmo foi baixado. ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1234880203',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   21: {
     title: 'Sistema de Controle de Versão',
     content: 'Usando GIT no Servidor de Aplicações. Usando repositórios Subversion (Linux). ' +
              'Usando repositórios Subersion (Windows)',
-    related: [20, 22, 23]
+    related: [20, 22, 23],
+    isFinal: false
   },
 
   22: {
@@ -645,7 +668,8 @@ var tutorials = {
              'que mostra as diferenças existentes entre os arquivos da sua pasta e os ' +
              'correspondentes no diretório.',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1218829237',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   23: {
@@ -680,14 +704,16 @@ var tutorials = {
              'o nome apenas pelo Tortoise, caso seja feito diretamente pelo Windows pode ' +
              'prejudicar o envio do docmento). ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1253331144',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   24: {
     title: 'Foswiki',
     content: 'Guia Rápido Foswiki. Alteração de Senha Foswiki. Adicionando um template ' +
              'alternativo à uma Web no Foswiki',
-    related: [25, 26, 27]
+    related: [25, 26, 27],
+    isFinal: true
   },
 
   25: {
@@ -703,7 +729,8 @@ var tutorials = {
              'Criando um Tópico ' +
              'TWiki e português ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1251297453',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   26: {
@@ -715,7 +742,8 @@ var tutorials = {
              '[1] https://wiki.dcc.ufba.br/System/ResetPassword?username= ' +
              '[2] https://wiki.dcc.ufba.br/System/ChangePassword',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1334701157',
-    related: []
+    related: [],
+    isFinal: true
   },
 
   27: {
@@ -732,6 +760,7 @@ var tutorials = {
              'Templates com JavaScript ' +
              'Aplicando template em um tópico específico ',
     link: 'https://wiki.dcc.ufba.br/Intranet/Tutorial1406330829',
-    related: []
+    related: [],
+    isFinal: true
   }
 };
