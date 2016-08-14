@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var jslint = require('gulp-jslint');
 var watch = require('gulp-watch');
