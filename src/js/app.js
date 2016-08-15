@@ -1,5 +1,7 @@
 var searchTerm;
 
+
+// Interface auxiliary functions
 function show(id) {
   document.getElementById(id).style.display = 'block';
 }
@@ -12,6 +14,7 @@ function setNotification(msg) {
   document.getElementById('agentMsg').innerHTML = msg;
 }
 
+// Shows the result on the page
 function result(ref) {
   hide('formPanel');
   hide('loading');
@@ -32,7 +35,10 @@ function result(ref) {
   link.innerHTML = tutorials[ref].title;
 }
 
+
+// Initializes the needed hash and calls the main dfs function and result()
 function depthSearch() {
+  // visited is a hash with every node's visitation status
   visited = {};
   for (key in tutorials)
     visited[key] = false;
@@ -41,13 +47,22 @@ function depthSearch() {
 }
 
 
+// Walks through the graph depth first looking for a match
 function DFS(key) {
   var node = tutorials[key];
-  if (node.isFinal && fullMatch(searchTerm, node.title))
+
+  // Returns the key of the current node
+  // if it is a final state
+  // and if it finds a match of the query words
+  // in the node title or in the node content
+  if (node.isFinal && (fullMatch(searchTerm, node.title) || fullMatch(searchTerm, node.content)))
     return key;
 
+  // Marks it as visited
   visited[key] = true;
 
+  // Iterate the related array of the current node calling dfs
+  // and returns tha result of the children if a match is found
   for (var i = 0; i < node.related.length; i++) {
     if (visited[node.related[i]] == false) {
       var answer = DFS(node.related[i]);
@@ -56,9 +71,14 @@ function DFS(key) {
     }
   }
 
+  // Returns null if the current node or
+  // it's direct and indirect children are not matches
   return null;
 }
 
+
+// Returns true if every word of s1 is contained in s2
+// or false otherwise
 function fullMatch(s1, s2) {
   s2 = s2.toLowerCase();
   var words = s1.split(' ').map(word => word.toLowerCase());
@@ -70,21 +90,27 @@ function fullMatch(s1, s2) {
   return true;
 }
 
+
+// Greedily walks through the graph looking for the best match value
 function hillClimbingSearch() {
+  // Initializes a hash with a custom match value
   var matchHash = {};
   for (key in tutorials)
-    matchHash[key] = -1;
+    matchHash[key] = 0;
 
+  // Initializes the variables used
   var maxMatch;
   var maxMatchKey;
   var maxMatchNode;
   var nodeKey = 'init';
   var node = tutorials['init'];
 
+  // Iterate through the nodes
   while (true) {
-    maxMatch = -1;
+    maxMatch = 0;
     maxMatchNode = null;
 
+    // Finds the best child node
     for (var i = 0; i < node.related.length; i++) {
       matchHash[node.related[i]] = calculateMatch(searchTerm, tutorials[node.related[i]]);
       if (matchHash[node.related[i]] > maxMatch) {
@@ -93,30 +119,59 @@ function hillClimbingSearch() {
         maxMatchNode = tutorials[node.related[i]];
       }
     }
-    if (node.isFinal && maxMatch <= matchHash[nodeKey]) {
-      result(nodeKey);
+
+    // Returns the current node if
+    // all other nodes are worse or equal to the current
+    // and the node is a final state
+    // Returns null if it's not a final state
+    if (maxMatch <= matchHash[nodeKey]) {
+      if (node.isFinal)
+        result(nodeKey);
+      else
+        result(null);
       return;
     }
+
+    // If not, makes the current node be the best child node
     nodeKey = maxMatchKey;
     node = maxMatchNode;
   }
 }
 
+
+// Calculates a match score for a query in a node
+// Title matches are 5 times more valuable than content matches
 function calculateMatch(query, node) {
   var words = query.split(' ').map(word => word.toLowerCase())
 
   var titleMatch = 0;
   for (var i = 0; i < words.length; i++)
-    if (node.title.toLowerCase().indexOf(words[i]) != -1)
-      titleMatch += (node.title.match(new RegExp(words[i], 'g')) || []).length;
+    titleMatch += matchCount(words[i], node.title.toLowerCase());
 
   var contentMatch = 0;
   for (var i = 0; i < words.length; i++)
-    contentMatch += (node.content.match(new RegExp(words[i], 'g')) || []).length;
+    contentMatch += matchCount(words[i], node.content.toLowerCase());
 
   return titleMatch * 5 + contentMatch;
 }
 
+
+// Returns the amount of occurences of a word in a text
+function matchCount(word, text) {
+  var count = 0;
+
+  var index = text.indexOf(word);
+  while (index != -1) {
+    count++;
+    text = text.slice(index + word.length);
+    index = text.indexOf(word);
+  }
+
+  return count;
+}
+
+
+// Initializes the page and variables
 function init(event) {
   event.preventDefault();
 
@@ -141,6 +196,8 @@ function init(event) {
     hillClimbingSearch();
 }
 
+
+// Restarts user interaction
 function restart(event) {
   event.preventDefault();
 
