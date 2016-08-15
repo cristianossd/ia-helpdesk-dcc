@@ -637,7 +637,7 @@ var tutorials = {
   },
 
   22: {
-    title: 'Usando repositórios Subersion (Linux)',
+    title: 'Usando repositórios Subversion (Linux)',
     content: 'Inicialmente, temos que criar uma pasta onde será gerada a cópia de trabalho ' +
              'a partir do repositório. ' +
              'Quando for preciso efetuar modificações em um projeto que já está no svn, ' +
@@ -673,7 +673,7 @@ var tutorials = {
   },
 
   23: {
-    title: 'Usando repositórios Subersion (Windows)',
+    title: 'Usando repositórios Subversion (Windows)',
     content: 'Muita gente ainda não está acostumado com o linux e reclama da forma de se ' +
              'utilizar o repositório svn pela linha de comando, mas para estes(amantes ' +
              'do Windows) existe uma solução prática, o TortoiseSVN, que é um programa ' +
