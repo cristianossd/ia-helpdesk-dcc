@@ -68,16 +68,50 @@ function fullMatch(s1, s2) {
 function hillClimbingSearch() {
   console.log('Running Hill Climbing');
 
-  /*
-   * call result() function passing the reference
-   * of the tutorial
-   *
-   * if the algorithm did not find the tutorial,
-   * pass null for result()
-   *
-   */
+  var matchHash = {};
+  for (key in tutorials)
+    matchHash[key] = -1;
 
-  result(12); // testing with index 12
+  var maxMatch;
+  var maxMatchKey;
+  var maxMatchNode;
+  var nodeKey = 'init';
+  var node = tutorials['init'];
+
+  while (true) {
+    maxMatch = -1;
+    maxMatchNode = null;
+
+    for (var i = 0; i < node.related.length; i++) {
+      matchHash[node.related[i]] = calculateMatch(searchTerm, tutorials[node.related[i]]);
+      if (matchHash[node.related[i]] > maxMatch) {
+        maxMatch = matchHash[node.related[i]];
+        maxMatchKey = node.related[i];
+        maxMatchNode = tutorials[node.related[i]];
+      }
+    }
+    if (node.isFinal && maxMatch <= matchHash[nodeKey]) {
+      result(nodeKey);
+      return;
+    }
+    nodeKey = maxMatchKey;
+    node = maxMatchNode;
+  }
+}
+
+function calculateMatch(query, node) {
+  var words = query.split(' ').map(word => word.toLowerCase())
+
+  var titleMatch = 0;
+  for (var i = 0; i < words.length; i++)
+    if (node.title.toLowerCase().indexOf(words[i]) != -1)
+      titleMatch += (node.title.match(new RegExp(words[i], 'g')) || []).length;
+
+  var contentMatch = 0;
+  for (var i = 0; i < words.length; i++)
+    contentMatch += (node.content.match(new RegExp(words[i], 'g')) || []).length;
+
+  return titleMatch * 5 + contentMatch;
 }
 
 function init(event) {
