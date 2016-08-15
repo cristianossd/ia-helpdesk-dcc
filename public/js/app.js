@@ -96,7 +96,7 @@ function hillClimbingSearch() {
   // Initializes a hash with a custom match value
   var matchHash = {};
   for (key in tutorials)
-    matchHash[key] = -1;
+    matchHash[key] = 0;
 
   // Initializes the variables used
   var maxMatch;
@@ -107,7 +107,7 @@ function hillClimbingSearch() {
 
   // Iterate through the nodes
   while (true) {
-    maxMatch = -1;
+    maxMatch = 0;
     maxMatchNode = null;
 
     // Finds the best child node
@@ -120,9 +120,15 @@ function hillClimbingSearch() {
       }
     }
 
-    // Returns the current node if all other nodes are worse or equal to the current
-    if (node.isFinal && maxMatch <= matchHash[nodeKey]) {
-      result(nodeKey);
+    // Returns the current node if
+    // all other nodes are worse or equal to the current
+    // and the node is a final state
+    // Returns null if it's not a final state
+    if (maxMatch <= matchHash[nodeKey]) {
+      if (node.isFinal)
+        result(nodeKey);
+      else
+        result(null);
       return;
     }
 
