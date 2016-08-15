@@ -107,14 +107,29 @@ function calculateMatch(query, node) {
 
   var titleMatch = 0;
   for (var i = 0; i < words.length; i++)
-    if (node.title.toLowerCase().indexOf(words[i]) != -1)
-      titleMatch += (node.title.match(new RegExp(words[i], 'g')) || []).length;
+    titleMatch += matchCount(words[i], node.title.toLowerCase());
 
   var contentMatch = 0;
   for (var i = 0; i < words.length; i++)
-    contentMatch += (node.content.match(new RegExp(words[i], 'g')) || []).length;
+    contentMatch += matchCount(words[i], node.content.toLowerCase());
+
+  console.log('tmatch - ' + titleMatch);
+  console.log('cmatch - ' + contentMatch);
 
   return titleMatch * 5 + contentMatch;
+}
+
+function matchCount(word, text) {
+  var count = 0;
+
+  var index = text.indexOf(word);
+  while (index != -1) {
+    count++;
+    text = text.slice(index + word.length);
+    index = text.indexOf(word);
+  }
+
+  return count;
 }
 
 function init(event) {
