@@ -1,11 +1,15 @@
 var searchTerm;
 
 function show(id) {
-  document.getElementById(id).style.display = 'inline-block';
+  document.getElementById(id).style.display = 'block';
 }
 
 function hide(id) {
   document.getElementById(id).style.display = 'none';
+}
+
+function setNotification(msg) {
+  document.getElementById('agentMsg').innerHTML = msg;
 }
 
 function result(ref) {
@@ -13,21 +17,22 @@ function result(ref) {
   hide('loading');
 
   if (ref === null) {
+    setNotification('My bad! Try again, please');
     show('fail');
 
     document.getElementById('resultTerm').innerHTML = searchTerm;
     return;
   }
 
+  setNotification('Good news! I found something');
   show('resultPanel');
+
   var link = document.getElementById('resultLink');
   link.href = tutorials[ref].link;
   link.innerHTML = tutorials[ref].title;
 }
 
 function depthSearch() {
-  console.log('Running depth first search');
-
   visited = {};
   for (key in tutorials)
     visited[key] = false;
@@ -66,8 +71,6 @@ function fullMatch(s1, s2) {
 }
 
 function hillClimbingSearch() {
-  console.log('Running Hill Climbing');
-
   var matchHash = {};
   for (key in tutorials)
     matchHash[key] = -1;
@@ -120,11 +123,14 @@ function init(event) {
   var searchBox = document.getElementById('searchBox').value;
   var depth = document.getElementById('depth').checked;
   var hillClimbing = document.getElementById('hillClimbing').checked;
-  if (searchBox === '' || (!depth && !hillClimbing))
+  if (searchBox === '' || (!depth && !hillClimbing)) {
+    setNotification('You must complete the form');
     return;
+  }
 
   searchTerm = searchBox;
   hide('formPanel');
+  setNotification('I am working, please wait ...');
   show('loading');
 
   if (depth)
@@ -138,6 +144,7 @@ function init(event) {
 function restart(event) {
   event.preventDefault();
 
+  setNotification('Insert a new term');
   hide('fail');
   hide('resultPanel');
   show('formPanel');
