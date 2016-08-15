@@ -17,7 +17,7 @@ var tutorials = {
 
   0: {
     title: 'Arquivos pessoais',
-    content: 'Como acessar seus arquivos de fora da rede. Página pessoal no' +
+    content: 'Como acessar seus arquivos de fora da rede: ftp, ftp, gftp. Página pessoal no' +
              'www.dcc.ufba.br',
     related: [1, 2],
     isFinal: false
@@ -709,7 +709,7 @@ var tutorials = {
   },
 
   24: {
-    title: 'Foswiki',
+    title: 'Sobre a wiki',
     content: 'Guia Rápido Foswiki. Alteração de Senha Foswiki. Adicionando um template ' +
              'alternativo à uma Web no Foswiki',
     related: [25, 26, 27],
