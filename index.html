@@ -3,38 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>Help Desk - DCC/UFBA</title>
+  <link rel="stylesheet" href="public/css/bijou.min.css">
+  <link rel="stylesheet" href="public/css/app.css">
 </head>
 <body>
-  <h2>Intelligent Agent Help Desk for DCC/UFBA Network</h2>
-
-  <div id="formPanel" class="form">
-    <p>What do you want to find?</p>
-
-    <form id="form">
-      <input id="searchBox" type="text" name="search" /> <br />
-      <input id="depth" type="radio" name="searchType" value="depth"> Depth-First Search <br />
-      <input id="hillClimbing" type="radio" name="searchType" value="hill-climbing"> Hill-Climbing <br />
-
-      <button id="submit">Search</button>
-    </form>
+  <div class='navbar fixed'>
+    <div class='container'>
+      <h4 class='pull-left'>Intelligent Agent Help Desk</h4>
+      <h4 class="pull-right">DCC/UFBA</h4>
+    </div>
   </div>
 
-  <div id="loading">
-    I'm working, please wait ...
-  </div>
+  <div class="container panel">
+    <div class="row">
+      <div id="searchPanel" class="span nine clouds-bg search-panel">
+        <div id="formPanel" class="form">
+          <form id="form">
+            <div class="row">
+              <div class="span ten">
+                <input id="searchBox" type="text" class="search-box" name="search" placeholder="WHAT YOU WANT TO FIND?"/> <br />
+              </div>
 
-  <div id="resultPanel" class="result">
-    I found what you want! Just follow the link below: <br />
-    <a id="resultLink" href="">Go to result</a>
+              <div class="span two button">
+                <button id="submit" class="nephritis-bg">SEARCH</button>
+              </div>
+            </div>
 
-    <p>Not what you're looking for?</p>
-    <button id="backBt">Go Back</button>
-  </div>
+            <div class="algorithms">
+              <input id="depth" type="radio" name="searchType" value="depth"> Depth-First Search
+              <input id="hillClimbing" type="radio" name="searchType" value="hill-climbing"> Hill-Climbing <br />
+            </div>
+          </form>
+        </div>
 
-  <div id="fail" class="fail">
-    I did not find results for <span id="resultTerm"></span>. Do you want to try with new term?
+        <div id="loading" class="loading">
+          <img src="public/imgs/balls.gif" alt="">
+        </div>
 
-    <button id="tryAgainBt">Try Again</button>
+        <div id="resultPanel" class="result">
+          I found what you want! Just follow the link below: <br />
+          <a id="resultLink" class="nephritis-bg" href="" target="_blank">Go to result</a>
+
+          <p>Not what you're looking for?</p>
+          <button id="backBt" class="orange-bg">Go Back</button>
+        </div>
+
+        <div id="fail" class="fail">
+          I did not find results for <span id="resultTerm" class="term">asaassa</span>.
+          Do you want to try a new term? <br />
+
+          <button id="tryAgainBt" class="orange-bg">Try Again</button>
+        </div>
+      </div>
+
+      <div id="profilePanel" class="span three agent-profile">
+        <img src="public/imgs/boy.png" alt="Agent">
+
+        <div class="name">
+          Bidica Labonga
+        </div>
+
+        <div id="agentMsg" class="speaking abestos-bg">
+          Hi! I'll help you :)
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="public/js/db/tutorials.js"></script>
