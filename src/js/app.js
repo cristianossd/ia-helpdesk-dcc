@@ -43,7 +43,7 @@ function depthSearch() {
 
 function DFS(key) {
   var node = tutorials[key];
-  if (node.isFinal && fullMatch(searchTerm, node.title))
+  if (node.isFinal && (fullMatch(searchTerm, node.title) || fullMatch(searchTerm, node.content))
     return key;
 
   visited[key] = true;
